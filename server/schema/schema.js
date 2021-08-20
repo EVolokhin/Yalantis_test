@@ -52,7 +52,6 @@ const Mutation = new GraphQLObjectType({
                 surname: {type:new GraphQLNonNull(GraphQLString)},
                 email: {type:new GraphQLNonNull(GraphQLString)},
                 photo: {type:new GraphQLNonNull(GraphQLString)},
-
             },
             resolve(parent,args){
                 return Users.findByIdAndUpdate(

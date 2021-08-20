@@ -8,10 +8,13 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import BlockIcon from '@material-ui/icons/Block';
 
+import withHocs from './UserDialogHoc';
+
 class UsersDialog extends React.Component {
 
   handleDelete = () => {
-    const { id, handleClose } = this.props;
+    const { id, handleClose, deleteUser } = this.props;
+    deleteUser({id})
     handleClose();
   }
 
@@ -44,4 +47,5 @@ class UsersDialog extends React.Component {
   }
 }
 
-export default UsersDialog;
+export default withHocs(UsersDialog);
+
