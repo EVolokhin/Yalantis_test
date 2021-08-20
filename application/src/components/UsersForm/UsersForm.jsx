@@ -13,13 +13,16 @@ class UsersForm extends React.Component {
   handleSave = () => {
     const { selectedValue, onClose, addUser, updateUser } = this.props;
     const { id, name, surname, email, photo } = selectedValue;
-    id ? updateUser({id, name, surname, email, photo }) : addUser({ name, surname, email, photo })
+    id
+        ? updateUser({id, name, surname, email, photo })
+        : addUser({ name, surname, email, photo })
+            .then(res => alert(`Added user ID -  ${res.data.addUser.id}`))
     onClose();
   };
 
+  // alert('Added user ID', res.data.addUser.id)
   render() {
-    console.log(this.props)
-    const { data = {}, classes, open, handleChange, handleSelectChange, selectedValue = {} } = this.props;
+    const { classes, open, handleChange, selectedValue = {} } = this.props;
     const { name, surname, email, photo } = selectedValue;
 
     return (
@@ -71,6 +74,6 @@ class UsersForm extends React.Component {
       </Dialog>
     );
   }
-};
+}
 
-  export default withHocs(UsersForm);
+export default withHocs(UsersForm);
