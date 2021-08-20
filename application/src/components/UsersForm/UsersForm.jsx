@@ -19,16 +19,20 @@ class UsersForm extends React.Component {
             .then(res => alert(`Added user ID -  ${res.data.addUser.id}`))
     onClose();
   };
-
-  // alert('Added user ID', res.data.addUser.id)
   render() {
-    const { classes, open, handleChange, selectedValue = {} } = this.props;
+    const {data = {}, classes, open, handleChange, selectedValue = {} } = this.props;
     const { name, surname, email, photo } = selectedValue;
 
     return (
-      <Dialog onClose={this.handleClose} open={open} aria-labelledby="simple-dialog-title">
+      <Dialog onClose={this.handleClose} open={open} aria-labelledby="simple-dialog-title" >
         <DialogTitle className={classes.title} id="simple-dialog-title">Users information</DialogTitle>
-        <form className={classes.container} noValidate autoComplete="off">
+        <form
+            action={"/Upload"}
+            method={"post"}
+            encType={"multipart/form-data"}
+            className={classes.container}
+            noValidate
+            autoComplete="off">
           <TextField
             id="outlined-name"
             label="Name"
@@ -56,15 +60,19 @@ class UsersForm extends React.Component {
               margin="normal"
               variant="outlined"
           />
-          <TextField
-              id="outlined-gender"
-              label="Photo"
+
+          Select Your Photo to upload:
+        <TextField
+              id="avatar"
+              name='avatar'
               className={classes.textField}
               value={photo}
               onChange={handleChange('photo')}
+              // type="file"
               margin="normal"
               variant="outlined"
           />
+
           <div className={classes.wrapper}>
             <Button onClick={this.handleSave} variant="contained" color="primary" className={classes.button}>
               <SaveIcon /> Save
