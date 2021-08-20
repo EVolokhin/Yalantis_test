@@ -7,3 +7,11 @@ export const addUserMutation = gql`
         }
     }
 `
+
+export const updateUserMutation = gql`
+    mutation updateUser($id: ID, $name: String!, $surname: String!, $email: String!, $photo: String!) {
+        updateUser(id: $id, name: $name, surname: $surname, email: $email, photo: $photo) {
+            name
+        }
+    }
+`

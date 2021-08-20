@@ -3,7 +3,7 @@ import React from 'react';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
-import DirectorsTable from '../UsersTable/UsersTable';
+import UsersTable from '../UsersTable/UsersTable';
 import UsersForm from '../UsersForm/UsersForm';
 
 import withHocs from './UsersHoc';
@@ -30,14 +30,14 @@ class Users extends React.Component {
   handleSelectChange = ({ target }) => { this.setState({ [target.name]: target.value }); };
 
   render() {
-    const { name, surname, email, photo, open } = this.state;
+    const { id, name, surname, email, photo, open } = this.state;
     const { classes } = this.props;
 
     return (
       <>
-        <UsersForm handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} selectedValue={{ name, surname, email, photo }} open={open} onClose={this.handleClose} />
+        <UsersForm handleChange={this.handleChange} handleSelectChange={this.handleSelectChange} selectedValue={{ id, name, surname, email, photo }} open={open} onClose={this.handleClose} />
         <div className={classes.wrapper}>
-          <DirectorsTable onOpen={this.handleClickOpen} onClose={this.handleClose} />
+          <UsersTable onOpen={this.handleClickOpen} onClose={this.handleClose} />
           <Fab onClick={() => this.handleClickOpen(null)} color="primary" aria-label="Add" className={classes.fab}>
             <AddIcon />
           </Fab>
