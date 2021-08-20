@@ -18,12 +18,9 @@ class UsersForm extends React.Component {
   };
 
   render() {
+    console.log(this.props)
     const { data = {}, classes, open, handleChange, handleSelectChange, selectedValue = {} } = this.props;
     const { name, surname, email, photo } = selectedValue;
-
-
-    console.log(selectedValue)
-    console.log(handleSelectChange) // remove from cars and add to users
 
     return (
       <Dialog onClose={this.handleClose} open={open} aria-labelledby="simple-dialog-title">
